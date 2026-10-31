@@ -1,96 +1,191 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --bg: #f4f7fb;
+  --panel: #ffffff;
+  --primary: #1b3a5b;
+  --primary-soft: #e8f0fa;
+  --accent: #2f8f9d;
+  --text: #1e293b;
+  --muted: #64748b;
+  --ok: #1f9d61;
+  --busy: #d97706;
+  --shadow: rgba(15, 23, 42, 0.08);
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+  font-family: Inter, 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #edf5ff 0%, #f8fafc 100%);
+  color: var(--text);
+}
+
+button, input {
+  font: inherit;
+}
+
+.page {
+  display: grid;
+  grid-template-columns: 260px 1fr;
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.sidebar {
+  background: var(--primary);
+  color: white;
+  padding: 2rem 1.25rem;
 }
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
+.sidebar h1 {
+  font-size: 1.8rem;
+  margin: 0 0 2rem;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sidebar a {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  padding: 0.8rem 0.9rem;
+  border-radius: 12px;
+  transition: 0.2s ease;
+}
+
+.sidebar a.active,
+.sidebar a:hover {
+  background: rgba(255,255,255,0.08);
+  color: white;
+}
+
+.content {
   padding: 2rem;
-  text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.topbar {
+  margin-bottom: 1.5rem;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+.eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  color: var(--muted);
 }
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #f7df1eaa);
+
+.topbar h2 {
+  margin: 0.25rem 0 0;
+  font-size: 2rem;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 
 .card {
-  padding: 2em;
+  background: var(--panel);
+  padding: 1.25rem;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px var(--shadow);
 }
 
-.read-the-docs {
-  color: #888;
+.stat span {
+  display: block;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
 }
 
-button {
+.stat strong {
+  font-size: 2rem;
+}
+
+.panel {
+  background: var(--panel);
+  border-radius: 16px;
+  box-shadow: 0 12px 30px var(--shadow);
+  padding: 1.25rem;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.book-card {
+  background: linear-gradient(135deg, #f8fbff, #eef6ff);
+  border: 1px solid #dbeafe;
+  border-radius: 16px;
+  padding: 1rem;
+}
+
+.badge {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.badge.ok {
+  background: rgba(31, 157, 97, 0.12);
+  color: var(--ok);
+}
+
+.badge.busy {
+  background: rgba(217, 119, 6, 0.12);
+  color: var(--busy);
+}
+
+.book-card h4 {
+  margin: 0 0 0.4rem;
+}
+
+.book-card p,
+.book-card small {
+  color: var(--muted);
+}
+
+.book-card code {
+  display: block;
+  margin-top: 0.75rem;
+  background: #eff6ff;
+  padding: 0.45rem 0.65rem;
   border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  font-size: 0.75rem;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.error-box {
+  max-width: 720px;
+  margin: 4rem auto;
+  background: white;
+  color: #7f1d1d;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(127, 29, 29, 0.12);
+  padding: 2rem;
+}
+
+@media (max-width: 768px) {
+  .page {
+    grid-template-columns: 1fr;
   }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+
+  .stats {
+    grid-template-columns: 1fr 1fr;
   }
 }
